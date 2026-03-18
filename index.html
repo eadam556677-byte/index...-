@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى أميرتي ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            background: #fff0f3 url('bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* تأثير القلوب المتحركة في الخلفية */
+        .floating-heart {
+            position: absolute;
+            bottom: -100px;
+            color: #ff4b6e;
+            font-size: 20px;
+            opacity: 0.8;
+            z-index: 1;
+            animation: floatUp 6s infinite ease-in;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        #login-screen, #main-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 10;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+        }
+
+        #main-content { display: none; max-height: 80vh; overflow-y: auto; }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 2px solid #ff4b6e;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        button {
+            background: #ff4b6e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover { transform: scale(1.05); background: #ff758f; }
+
+        .countdown {
+            font-size: 20px;
+            color: #d63384;
+            font-weight: bold;
+            margin: 15px 0;
+            background: #ffe5ec;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .message-box {
+            display: none;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px dashed #ff4b6e;
+            line-height: 1.8;
+            font-size: 17px;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <audio id="music1" src="music1.mp3" loop></audio>
+    <audio id="music2" src="music2.mp3" loop></audio>
+
+    <div id="login-screen">
+        <h2 style="color:#ff4b6e">اكتبي السر يا قلبي ❤️</h2>
+        <input type="password" id="passInput" placeholder="اكتبي الكلمة هنا...">
+        <button onclick="checkPass()">دخول ✨</button>
+    </div>
+
+    <div id="main-content">
+        <h2 style="color:#ff4b6e">قرب عيد ميلاد القمورة 🎂🌙</h2>
+        <div class="countdown" id="timer"></div>
+
+        <video id="myVideo" controls onplay="pauseMusic()" onpause="resumeMusic()">
+            <source src="video.mp4" type="video/mp4">
+            متصفحك لا يدعم الفيديو.
+        </video>
+
+        <br>
+        <button id="msgBtn" onclick="showFinal()">دوسي هنا يا روحي ❤️</button>
+
+        <div class="message-box" id="letter">
+            بصى بقا انا مش عارف اقولك ايه <br>
+            بس بجد عايز اقولك انك احلى حاجه حصلتلى فى حياتى❤️🫂<br>
+            وعايزك تشيلى من دماغك فكره اننا ممكن نسيب بعض عشان إن شاء الله مش هيحصل🥹<br>
+            عايز اقولك انى بحبك اوييييي يا جيكا❤️💗<br>
+            ومقدرش استغنا عنك وبجد انتى كل حياتي❤️🥹<br>
+            انتى النفس إلى بتنفسه ❤️😉<br>
+            ده اول عيد ميلاد ليكى واحنا مع بعض وإن شاء الله مع بعض لآخر العمر ❤️🥹<br>
+            احنا بس لو نبطل ننام ٢٣ ساعه فى اليوم هتبقى احسن 😂😂😂😂<br>
+            بحبك يا اجمل بنت شافتها عينى❤️💗<br>
+            بحححححححببببك ❤️❤️❤️❤️<br>
+            كل سنه وانتى معايا وجمبى وفى ضهرى فى اى حاجه بعملها 🥹💗<br>
+            كل سنه وانتى طيبه يا حبيبى ❤️❤️❤️❤️<br><br>
+            <button onclick="window.location.href='https://youtu.be/SKfi0V8NRhQ?si=tG8J_1TJuZpy673i'">دوسي هنا للمفاجأة الأخيرة 🎵</button>
+        </div>
+    </div>
+
+    <script>
+        const music1 = document.getElementById("music1");
+        const music2 = document.getElementById("music2");
+        const video = document.getElementById("myVideo");
+
+        function checkPass() {
+            let pass = document.getElementById("passInput").value;
+            if (pass.toLowerCase() === "love") {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+                music1.play();
+                startCountdown();
+                createFloatingHearts();
+            } else {
+                alert("الباسوورد غلط يا حبيبتي! 🙊❤️");
+            }
+        }
+
+        // التحكم في التزامن
+        function pauseMusic() { music1.pause(); }
+        function resumeMusic() { if(document.getElementById("letter").style.display !== "block") music1.play(); }
+
+        function showFinal() {
+            video.pause(); // إيقاف الفيديو
+            music1.pause(); // إيقاف الأغنية الأولى
+            music2.play(); // تشغيل الأغنية الثانية
+            document.getElementById("letter").style.display = "block";
+            document.getElementById("msgBtn").style.display = "none";
+        }
+
+        function startCountdown() {
+            const target = new Date("March 22, 2026 00:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const d = target - now;
+                const days = Math.floor(d / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((d % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerHTML = `${days} يوم | ${hours} ساعة | ${mins} دقيقة | ${secs} ثانية`;
+            }, 1000);
+        }
+
+        // إنشاء القلوب الطائرة
+        function createFloatingHearts() {
+            setInterval(() => {
+                const heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("floating-heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+                heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 6000);
+            }, 400);
+        }
+    </script>
+</body>
+</html>

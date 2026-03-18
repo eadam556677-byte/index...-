@@ -20,7 +20,7 @@
             overflow: hidden;
         }
 
-        /* تأثير القلوب المتحركة في الخلفية */
+        /* تأثير القلوب المتحركة */
         .floating-heart {
             position: absolute;
             bottom: -100px;
@@ -29,6 +29,7 @@
             opacity: 0.8;
             z-index: 1;
             animation: floatUp 6s infinite ease-in;
+            pointer-events: none;
         }
 
         @keyframes floatUp {
@@ -37,70 +38,101 @@
         }
 
         #login-screen, #main-content {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.94);
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             z-index: 10;
             width: 90%;
-            max-width: 450px;
+            max-width: 500px;
             position: relative;
         }
 
-        #main-content { display: none; max-height: 80vh; overflow-y: auto; }
+        #main-content { 
+            display: none; 
+            max-height: 85vh; 
+            overflow-y: auto; 
+            scrollbar-width: none; /* لإخفاء شريط التمرير في فايرفوكس */
+        }
+        #main-content::-webkit-scrollbar { display: none; } /* لإخفاء شريط التمرير في كروم */
 
         input {
             width: 80%;
             padding: 12px;
             margin: 20px 0;
             border: 2px solid #ff4b6e;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
             font-size: 18px;
+            outline: none;
         }
 
         button {
             background: #ff4b6e;
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
+            padding: 14px 30px;
+            border-radius: 30px;
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
             transition: 0.3s;
+            margin: 10px 0;
         }
 
-        button:hover { transform: scale(1.05); background: #ff758f; }
-
-        .countdown {
-            font-size: 20px;
-            color: #d63384;
-            font-weight: bold;
-            margin: 15px 0;
-            background: #ffe5ec;
-            padding: 10px;
-            border-radius: 10px;
-        }
+        button:hover { background: #ff758f; transform: scale(1.05); }
 
         video {
             width: 100%;
             border-radius: 15px;
-            margin: 15px 0;
+            margin-bottom: 25px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* تنسيق الصور تحت بعضها */
+        .photo-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #ffe5ec;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .photo-card p {
+            font-size: 16px;
+            color: #444;
+            margin-top: 12px;
+            line-height: 1.6;
+            font-weight: 500;
         }
 
         .message-box {
             display: none;
             background: #fff;
-            padding: 20px;
-            border-radius: 15px;
+            padding: 25px;
+            border-radius: 20px;
             border: 2px dashed #ff4b6e;
             line-height: 1.8;
             font-size: 17px;
-            margin-top: 20px;
+            margin-top: 30px;
             animation: fadeIn 1s ease-in;
+            text-align: center;
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -118,13 +150,30 @@
     </div>
 
     <div id="main-content">
-        <h2 style="color:#ff4b6e">قرب عيد ميلاد القمورة 🎂🌙</h2>
-        <div class="countdown" id="timer"></div>
+        <h2 style="color:#ff4b6e">كل سنة وأنتي منورة حياتي 🎂🌙</h2>
 
         <video id="myVideo" controls onplay="pauseMusic()" onpause="resumeMusic()">
             <source src="video.mp4" type="video/mp4">
-            متصفحك لا يدعم الفيديو.
         </video>
+
+        <div class="photo-list">
+            <div class="photo-card">
+                <img src="photo1.jpg" alt="صورة 1">
+                <p>ضحكتك دي هي اللي بتهون عليا أي حاجة صعبة بشوفها في يومي ❤️</p>
+            </div>
+            <div class="photo-card">
+                <img src="photo2.jpg" alt="صورة 2">
+                <p>كل تفصيلة فيكي بحبها، كأنك اتعملتي مخصوص على مقاس قلبي 💍</p>
+            </div>
+            <div class="photo-card">
+                <img src="photo3.jpg" alt="صورة 3">
+                <p>عارفة؟ مفيش حد في الدنيا يقدر يملى مكاني غيرك يا ست البنات 👑</p>
+            </div>
+            <div class="photo-card">
+                <img src="photo4.jpg" alt="صورة 4">
+                <p>وجودك جنبي هو الأمان اللي كنت طول عمري بدور عليه وبتمناه 🥹💗</p>
+            </div>
+        </div>
 
         <br>
         <button id="msgBtn" onclick="showFinal()">دوسي هنا يا روحي ❤️</button>
@@ -156,40 +205,32 @@
             if (pass.toLowerCase() === "love") {
                 document.getElementById("login-screen").style.display = "none";
                 document.getElementById("main-content").style.display = "block";
-                music1.play();
-                startCountdown();
+                music1.play().catch(e => console.log("Audio play deferred"));
                 createFloatingHearts();
             } else {
-                alert("الباسوورد غلط يا حبيبتي! 🙊❤️");
+                alert("الباسوورد غلط يا قلبي! ركزي 🙊❤️");
             }
         }
 
-        // التحكم في التزامن
         function pauseMusic() { music1.pause(); }
-        function resumeMusic() { if(document.getElementById("letter").style.display !== "block") music1.play(); }
+        function resumeMusic() { 
+            if(document.getElementById("letter").style.display !== "block") {
+                music1.play();
+            }
+        }
 
         function showFinal() {
-            video.pause(); // إيقاف الفيديو
-            music1.pause(); // إيقاف الأغنية الأولى
-            music2.play(); // تشغيل الأغنية الثانية
+            video.pause();
+            music1.pause();
+            music2.play();
             document.getElementById("letter").style.display = "block";
             document.getElementById("msgBtn").style.display = "none";
+            // النزول تلقائياً للرسالة بعد ظهورها
+            setTimeout(() => {
+                document.getElementById("letter").scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         }
 
-        function startCountdown() {
-            const target = new Date("March 22, 2026 00:00:00").getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                const d = target - now;
-                const days = Math.floor(d / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const mins = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-                const secs = Math.floor((d % (1000 * 60)) / 1000);
-                document.getElementById("timer").innerHTML = `${days} يوم | ${hours} ساعة | ${mins} دقيقة | ${secs} ثانية`;
-            }, 1000);
-        }
-
-        // إنشاء القلوب الطائرة
         function createFloatingHearts() {
             setInterval(() => {
                 const heart = document.createElement("div");
